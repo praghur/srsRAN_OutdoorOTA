@@ -5,7 +5,6 @@ source $BINDIR/common.sh
 
 sudo sysctl -w net.ipv4.ip_forward=1
 sudo iptables -t nat -A POSTROUTING -s 10.45.0.0/16 ! -o ogstun -j MASQUERADE
-#sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/16 ! -o enp4s0f1 -j MASQUERADE
 
 if [ -f $SRCDIR/open5gs-setup-complete ]; then
     echo "setup already ran; not running again"
@@ -52,9 +51,6 @@ sudo systemctl restart open5gs-nssfd
 sudo systemctl restart open5gs-bsfd
 sudo systemctl restart open5gs-udrd
 
-#cd /local/repository/bin
-#chmod +x restart_core
-
 cd $SRCDIR
 wget https://raw.githubusercontent.com/open5gs/open5gs/main/misc/db/open5gs-dbctl
 chmod +x open5gs-dbctl
@@ -69,15 +65,5 @@ chmod +x open5gs-dbctl
 ./open5gs-dbctl type 999990000000001 1  # APN type IPV4
 ./open5gs-dbctl static_ip 999990000000001 10.45.2.10
 
-  
-##For UE3 connecting with gNB3
-./open5gs-dbctl add_ue_with_slice 999990000000002 00112233445566778899aabbccddeeff 0ed47545168eafe2c39c075829a7b61f internet 3 0x000001 # IMSI,K,OPC
-./open5gs-dbctl type 999990000000002 1  # APN type IPV4
-./open5gs-dbctl static_ip 999990000000002 10.45.3.10
-
-##For UE4 connecting with gNB4
-./open5gs-dbctl add_ue_with_slice 999990000000003 00112233445566778899aabbccddeeff 0ed47545168eafe2c39c075829a7b61f internet 4 0x000001 # IMSI,K,OPC
-./open5gs-dbctl type 999990000000003 1  # APN type IPV4
-./open5gs-dbctl static_ip 999990000000003 10.45.4.10
 
 touch $SRCDIR/open5gs-setup-complete
