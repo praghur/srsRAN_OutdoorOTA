@@ -142,6 +142,7 @@ pc.defineParameter(
     legalValues=outdoor_ota_gNB
 )
 
+#This is edited to include 2 UEs. 
 indoor_ota_nucs = [
     ("ota-nuc{}".format(i), "Indoor OTA nuc{} with B210 and COTS UE".format(i)) for i in range(1, 2)
 ]
@@ -152,7 +153,7 @@ pc.defineStructParameter(
     defaultValue=[{ "node_id": "ota-nuc2" }],
     multiValue=True,
     min=1,
-    max=4,
+    max=2,
     members=[
         portal.Parameter(
             "node_id",
