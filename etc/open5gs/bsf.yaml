@@ -1,0 +1,16 @@
+logger:
+  file: /var/log/open5gs/bsf.log
+
+global:
+  max:
+    ue: 1024  # The number of UE can be increased depending on memory size.
+
+bsf:
+  sbi:
+    server:
+      - address: 127.0.0.15
+        port: 7777
+    client:
+      scp:
+        - uri: http://127.0.0.200:7777
+

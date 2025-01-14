@@ -1,0 +1,16 @@
+logger:
+  file: /var/log/open5gs/sgwu.log
+
+global:
+  max:
+    ue: 1024  # The number of UE can be increased depending on memory size.
+
+sgwu:
+  pfcp:
+    server:
+      - address: 127.0.0.6
+    client:
+  gtpu:
+    server:
+      - address: 127.0.0.6
+

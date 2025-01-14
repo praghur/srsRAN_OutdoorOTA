@@ -1,0 +1,17 @@
+logger:
+  file: /var/log/open5gs/nrf.log
+
+global:
+  max:
+    ue: 1024  # The number of UE can be increased depending on memory size.
+
+nrf:
+  serving:  # 5G roaming requires PLMN in NRF
+    - plmn_id:
+        mcc: 999
+        mnc: 99
+  sbi:
+    server:
+      - address: 127.0.0.10
+        port: 7777
+

@@ -1,0 +1,16 @@
+logger:
+  file: /var/log/open5gs/scp.log
+
+global:
+  max:
+    ue: 1024  # The number of UE can be increased depending on memory size.
+
+scp:
+  sbi:
+    server:
+      - address: 127.0.0.200
+        port: 7777
+    client:
+      nrf:
+        - uri: http://127.0.0.10:7777
+
