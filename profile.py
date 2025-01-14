@@ -26,11 +26,11 @@ ETC_PATH = "/local/repository/etc"
 UBUNTU_IMG = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 COTS_UE_IMG = "urn:publicid:IDN+emulab.net+image+PowderTeam:cots-jammy-image"
 COMP_MANAGER_ID = "urn:publicid:IDN+emulab.net+authority+cm"
-#DEFAULT_SRSRAN_HASH = "5e6f50a202c6efa671d5b231d7c911dc6c3d86ed"
 DEFAULT_SRSRAN_HASH = "4ac5300d4927b5199af69e6bc2e55d061fc33652"
 OPEN5GS_DEPLOY_SCRIPT = os.path.join(BIN_PATH, "deploy-open5gs.sh")
 SRSRAN_DEPLOY_SCRIPT = os.path.join(BIN_PATH, "deploy-srsran.sh")
 
+##This can be renamed depending on the name/make of the gNB
 def x310_node_pair(idx, x310_radio):
     node = request.RawPC("{}-gnb".format(x310_radio))
     node.component_manager_id = COMP_MANAGER_ID
@@ -117,38 +117,28 @@ pc.defineParameter(
     advanced=True
 )
 
-indoor_ota_x310s = [
+#Need Dustin's help in this
+######
+outdoor_ota_gNB = [
     ("ota-x310-1",
-     "USRP X310 #1"),
+     "USRP gNB #1"),
     ("ota-x310-2",
-     "USRP X310 #2"),
-    ("ota-x310-3",
-     "USRP X310 #3"),
-    ("ota-x310-4",
-     "USRP X310 #4"),
+     "USRP gNB2 #2"),
 ]
 pc.defineParameter(
     name="x310_radio1",
     description="X310 Radio as gNB1",
     typ=portal.ParameterType.STRING,
-    defaultValue=indoor_ota_x310s[0],
-    legalValues=indoor_ota_x310s
+    defaultValue=outdoor_ota_gNB[0],
+    legalValues=outdoor_ota_gNB
 )
 
 pc.defineParameter(
     name="x310_radio2",
     description="X310 Radio as gNB2",
     typ=portal.ParameterType.STRING,
-    defaultValue=indoor_ota_x310s[1],
-    legalValues=indoor_ota_x310s
-)
-
-pc.defineParameter(
-    name="x310_radio3",
-    description="X310 Radio as gNB3",
-    typ=portal.ParameterType.STRING,
-    defaultValue=indoor_ota_x310s[2],
-    legalValues=indoor_ota_x310s
+    defaultValue=outdoor_ota_gNB[1],
+    legalValues=outdoor_ota_gNB
 )
 
 indoor_ota_nucs = [
@@ -172,7 +162,7 @@ pc.defineStructParameter(
         )
     ]
 )
-
+#######
 pc.defineStructParameter(
     "freq_ranges", "Frequency Ranges To Transmit In",
     defaultValue=[{"freq_min": 3400.0, "freq_max": 3460.0}],
@@ -218,8 +208,6 @@ cn_node.addService(rspec.Execute(shell="bash", command=OPEN5GS_DEPLOY_SCRIPT))
 # single x310 for for observation or another gNodeB
 x310_node_pair(0, params.x310_radio1)
 x310_node_pair(1, params.x310_radio2)
-x310_node_pair(2, params.x310_radio3)
-
 
 for ue_node in params.ue_nodes:
     b210_nuc_pair(ue_node.node_id)
