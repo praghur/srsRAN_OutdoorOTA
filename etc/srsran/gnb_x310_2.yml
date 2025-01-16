@@ -32,7 +32,7 @@ cell_cfg:
   ssb:
     ssb_period: 20
   pusch:    #This is copied from low_latency.yml file in srsRAN_Project/config directory
-    min_k2: 2
+    min_k2: 2 #Time delay between DCI and PUSCH slot
   tdd_ul_dl_cfg:
     dl_ul_tx_period: 10
     nof_dl_slots: 6
@@ -41,7 +41,7 @@ cell_cfg:
     nof_ul_symbols: 0
   pucch:
     sr_period_ms: 2
-    min_k1: 2
+    min_k1: 2 ##Time delay between PDSCH slot and the corresponding AC/NACK messages in PUCCH
   mac_cell_group:
     bsr_cfg:
       periodic_bsr_timer: 1
