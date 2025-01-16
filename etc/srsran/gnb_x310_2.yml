@@ -1,3 +1,4 @@
+##See explanation to configuration in gnb_x310_1.yml
 gnb_id: 200
 gnb_id_bit_length: 32
 
