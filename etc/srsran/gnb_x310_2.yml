@@ -44,7 +44,7 @@ cell_cfg:
     min_k1: 2 ##Time delay between PDSCH slot and the corresponding AC/NACK messages in PUCCH
   mac_cell_group:
     bsr_cfg:
-      periodic_bsr_timer: 1
+      periodic_bsr_timer: 1 #This timer controls how frequently the UE sends a Periodic Buffer Static Report (BSR). BSR is sent from UE to MAC layer in gNB saying ''I have this amount of data to send would you give grants big enough to transmit all of these data ?'
   slicing:
    - sst: 2
      sd: 0x000001
