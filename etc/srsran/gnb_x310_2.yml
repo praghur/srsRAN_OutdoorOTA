@@ -46,6 +46,7 @@ cell_cfg:
   mac_cell_group:
     bsr_cfg:
       periodic_bsr_timer: 1 
+  slicing:
    - sst: 2
      sd: 0x000001
      sched_cfg:
