@@ -31,7 +31,7 @@ qos:
     f1u_cu_up:
       backoff_timer: 10
     mac:
-      lc_priority: 4
+      lc_priority: 4 #The MAC layer prioritises data from the logical channels CCCH, DCCH, and DTCH. A low numerical priority corresponds to a high priority
       lc_group_id: 1
       bucket_size_duration_ms: 5
       prioritized_bit_rate_kBps: 65537
