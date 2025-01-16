@@ -9,6 +9,9 @@ run_traceroute() {
   done
 }
 
+# Initialize the CSV file with headers
+echo "Timestamp, Traceroute Result" > traceroute_results.csv
+
 # Run the traceroute function every hour for 24 hours
 for hour in {1..24}
 do
