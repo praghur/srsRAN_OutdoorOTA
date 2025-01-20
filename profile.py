@@ -142,11 +142,12 @@ pc.defineParameter(
     legalValues=outdoor_ota_gNB
 )
 
-#This is edited to include 2 UEs. 
+
 indoor_ota_nucs = [
-    ("ota-nuc{}".format(i), "Indoor OTA nuc{} with B210 and COTS UE".format(i)) for i in range(1, 2)
+    ("ota-nuc{}".format(i), "Indoor OTA nuc{} with B210 and COTS UE".format(i)) for i in range(1, 5)
 ]
 
+#This is edited to include 2 UEs. 
 pc.defineStructParameter(
     name="ue_nodes",
     description="Indoor OTA NUC with COTS UE",
