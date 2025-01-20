@@ -9,9 +9,12 @@ Open5gs deployment
 
 •	The ‘/bin/deploy-open5gs.sh’ script is used to deploy the core network. The UE credentials are added to the database in this script. In outdoor laboratory, slices are no longer required to connect the UEs to the respective gNB. The profile is kept with slicing to allow initial testing with indoor laboratory equipment. 
 
-•	The slice is assigned to each UE differently so that the UE gets attached to the respective gNB. 
+•	The slice is assigned to each UE differently so that the UE gets attached to the respective gNB.
+
 o	UE1 --> IP is 10.45.1.10 
+
 o	UE2 --> IP is 10.45.2.10 
+
 
 **gNB deployment**
 
