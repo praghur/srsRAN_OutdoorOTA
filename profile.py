@@ -124,7 +124,7 @@ outdoor_ota_gNB = [
     ("ota-x310-1",
      "USRP gNB #1"),
     ("ota-x310-2",
-     "USRP gNB2 #2"),
+     "USRP gNB #2"),
 ]
 pc.defineParameter(
     name="x310_radio1",
